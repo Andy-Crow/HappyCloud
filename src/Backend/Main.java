@@ -14,6 +14,8 @@ public class Main {
         Express app = new Express();
         Database db = new Database();
 
+
+        //ladda upp en bild
         app.post("/api/upload/image", (req, res) -> {
             String imageUrl = null;
 
@@ -27,6 +29,8 @@ public class Main {
             res.send(imageUrl);
         });
 
+
+        //ladda upp en fil
         app.post("/api/upload/file", (req, res) -> {
             String fileUrl = null;
 
@@ -39,6 +43,8 @@ public class Main {
 
             res.send(fileUrl);
         });
+
+
 
         app.get("/rest/url-ids", (req, res) -> {
             List<Url> urlids = db.getURLids();
@@ -58,6 +64,8 @@ public class Main {
             res.json(notes);
         });
 
+
+        //radera en note
         app.delete("/rest/notes/delete", (req, res) -> {
             Note note = (Note) req.getBody(Note.class);
 
@@ -66,6 +74,8 @@ public class Main {
             res.json(note);
         });
 
+
+        //skapa en note
         app.post("/rest/notes", (req, res) -> {
 
             Note note = (Note) req.getBody(Note.class);
@@ -75,6 +85,8 @@ public class Main {
             res.send("post OK");
         });
 
+
+        //uppdatera en note
         app.post("/rest/notes/update", (req, res) -> {
             Note note = (Note) req.getBody(Note.class);
 
